@@ -51,7 +51,7 @@ package
 			if(soundBytes != null)
 			{   
 				holder = f.superFormulle(3, 5, 2, 5, 6,1, 0x000000, 10, 6);
-				f.lussen(3);
+				holder=f.lussen(3,0.1);
 				var scaleAm:Number = soundBytes.readFloat()*10;	
 				var rotAm:Number = soundBytes.readFloat()*10;	
 				addChild(holder);

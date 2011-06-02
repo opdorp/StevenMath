@@ -39,14 +39,15 @@ package
 		
 		
 		
-		public function lussen(t:Number, detail:Number):Sprite
+		public function lussen(a:Number, detail:Number):Sprite
 		{
 			var graph:Sprite=new Sprite;
 			var ang:Number=0;
+			var r:Number;
 			
 			for(ang=0; ang < 360; ang+=detail)
 			{
-				r = Math.sin((3 * t)); 
+				r = Math.sin((a * ang)); 
 			}
 			//r = sin 3t
 			
