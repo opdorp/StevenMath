@@ -4,7 +4,7 @@ package
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	
-	
+	[SWF(framerate="30")]
 	
 	public class Main extends Sprite
 	{

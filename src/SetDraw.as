@@ -8,6 +8,7 @@ package
 	import flash.events.Event;
 	import flash.geom.ColorTransform;
 	import flash.media.SoundMixer;
+	import flash.sampler.NewObjectSample;
 	import flash.utils.ByteArray;
 	
 	
@@ -15,12 +16,16 @@ package
 	{
 		public var holder:Sprite = new Sprite();
 		public var soundBytes:ByteArray;
+		
+		private var f:Functions = new Functions();
 		//private var pow:int = 0;
 		
 		public function SetDraw()
 		
 		{
-			holder.graphics.beginFill(Math.random() * 0xFFFFFF);
+			addChild(f);
+			
+			/*holder.graphics.beginFill(Math.random() * 0xFFFFFF);
 			
 			
 			holder.graphics.drawRect(0, 0, 20000,10);
@@ -28,8 +33,8 @@ package
 			
 			addChild(holder);
 			holder.x = 0;
-			holder.y = 0;
-			
+			holder.y = 0;*/
+			//addChild(holder);
 			addEventListener(Event.ENTER_FRAME, frameHandler);
 			
 			
@@ -40,16 +45,24 @@ package
 		{
 			
 			//trace(soundBytes);	
-			if(soundBytes != null)
-			{
-				var scaleAm:Number = soundBytes.readFloat()*100;	
-					
-			}
+			holder.graphics.clear();
+			//removeChild(holder);
 			
+			if(soundBytes != null)
+			{   
+				holder = f.superFormulle(3, 5, 2, 5, 6,1, 0x000000, 10, 6);
+				f.lussen(3);
+				var scaleAm:Number = soundBytes.readFloat()*10;	
+				var rotAm:Number = soundBytes.readFloat()*10;	
+				addChild(holder);
+				 	
+			}
+			holder.x = mouseX - holder.width * .5;
+			holder.y = mouseY - holder.height * .5;
 			
 			//trace('jaaa');
 			
-			TweenLite.to(holder, 0.1, {scaleY:scaleAm, ease:Back.easeInOut});
+			TweenLite.to(holder, 0.01, {scaleY:scaleAm, rotation:rotAm, ease:Back.easeInOut });
 			
 		}
 		
