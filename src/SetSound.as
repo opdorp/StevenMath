@@ -72,7 +72,7 @@ package
 		private function setSound():void
 		{
 			micSound = new Sound();
-			micSound.
+			
 			micSound.addEventListener(SampleDataEvent.SAMPLE_DATA, soundDataHandler);
 		}
 		
