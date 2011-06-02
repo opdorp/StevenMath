@@ -15,7 +15,7 @@ package
 	
 	public class SetSound extends Sprite
 	{
-		//properties kobe
+		//properties
 		private var micSound:Sound;
 		private var micBytes:ByteArray;
 		private var soundBytes:ByteArray = new ByteArray();
