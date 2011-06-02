@@ -49,7 +49,7 @@ package
 				Security.showSettings(SecurityPanel.MICROPHONE);
 				mic.setLoopBack(false);	
 				mic.gain = 100;
-				mic.rate = 44;
+				mic.rate = 84;
 				mic.addEventListener(SampleDataEvent.SAMPLE_DATA, micSampleDataHandler);
 			}
 			else
@@ -94,7 +94,7 @@ package
 			
 			if(soundBytes.bytesAvailable)
 			{
-				trace(soundBytes);
+				//trace(soundBytes);
 				//var scaleAm:Number = soundBytes.readFloat();
 				//setDraw.drawLines(scaleAm);
 				

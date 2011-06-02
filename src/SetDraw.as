@@ -50,11 +50,24 @@ package
 			
 			if(soundBytes != null)
 			{   
-				holder = f.superFormulle(3, 5, 2, 5, 6,1, 0x000000, 10, 6);
-				holder=f.lussen(3,0.1);
-				var scaleAm:Number = soundBytes.readFloat()*10;	
-				var rotAm:Number = soundBytes.readFloat()*10;	
+				var color:uint = Math.random() * 0xffffff;
+				
+				holder = f.superFormulle(3, 5, 2, 5, 6,1, color, 10, 6);
+				holder=f.lussen(6,0.01,color, 20);
+				
+				var scaleAm:Number;
+				var rotAm:Number
+				
+				if(soundBytes.readFloat() == 0)
+				{
+					scaleAm = rotAm = 1;
+				}
+				else
+				{
+				scaleAm = soundBytes.readFloat()*40;	
+				rotAm = soundBytes.readFloat()*40;	
 				addChild(holder);
+				}
 				 	
 			}
 			holder.x = mouseX - holder.width * .5;
@@ -62,7 +75,7 @@ package
 			
 			//trace('jaaa');
 			
-			TweenLite.to(holder, 0.01, {scaleY:scaleAm, rotation:rotAm, ease:Back.easeInOut });
+			TweenLite.to(holder, 0.01, {scaleY:scaleAm, scaleX:scaleAm, rotation:rotAm, ease:Back.easeInOut });
 			
 		}
 		

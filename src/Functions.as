@@ -39,15 +39,25 @@ package
 		
 		
 		
-		public function lussen(a:Number, detail:Number):Sprite
+		public function lussen(a:Number, detail:Number, color:uint, size:Number):Sprite
 		{
 			var graph:Sprite=new Sprite;
 			var ang:Number=0;
 			var r:Number;
+			var coor:Array=[];
 			
 			for(ang=0; ang < 360; ang+=detail)
 			{
-				r = Math.sin((a * ang)); 
+				r = Math.sin((a * ang));
+				coor.push(ang, r);
+			
+				if (ang == 0)
+				{
+					graph.graphics.lineStyle(1, color);
+					graph.graphics.moveTo(size * r * Math.cos(ang), size * r * Math.sin(ang));
+				}
+				graph.graphics.lineTo(size * r * Math.cos(ang), size * r * Math.sin(ang));
+				
 			}
 			//r = sin 3t
 			
