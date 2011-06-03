@@ -25,13 +25,18 @@ package
 		
 		private var timer:Timer = new Timer(2000);
 		private var f:Functions = new Functions();
+		private var s:PropertiesFunctions = new PropertiesFunctions();
+		
 		//private var pow:int = 0;
 		
 		public function SetDraw()
 		
 		{
 			addChild(f);
-			
+			s.addSlider(); 
+			addChild(s);
+			s.x = 10;
+			s.y = 10
 			/*holder.graphics.beginFill(Math.random() * 0xFFFFFF);
 			
 			
