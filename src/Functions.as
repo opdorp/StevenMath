@@ -20,12 +20,16 @@ package
 		
 		public function superFormulle (a:Number, b:Number, m:Number, n1:Number, n2:Number, n3:Number,color:uint, size:Number, detail:Number):Sprite
 		{
+			//trace(b);
+			var graph:Sprite=new Sprite;
+			graph.graphics.clear();
 			var r:Number;
 			var ang:Number=0;
 			var coor:Array=[];
 			var arg1:Number;
 			var arg2:Number;
-			var graph:Sprite=new Sprite;
+			
+			
 			for (ang=0; ang < 360; ang+=detail)
 			{
 				arg1=(Math.cos((m * ang) / 4)) / a;
@@ -46,8 +50,10 @@ package
 		
 		
 		public function lussen(a:Number, detail:Number, color:uint, size:Number):Sprite
-		{
+		{  
+			
 			var graph:Sprite=new Sprite;
+			graph.graphics.clear();
 			var ang:Number=0;
 			var r:Number;
 			var coor:Array=[];
@@ -73,7 +79,9 @@ package
 		
 		public function lemniscaat(a:Number, detail:Number, color:uint, size:Number):Sprite
 		{
+			
 			var graph:Sprite=new Sprite;
+			graph.graphics.clear();
 			var ang:Number=0;
 			var r:Number;
 			var coor:Array=[];
@@ -99,7 +107,9 @@ package
 		
 		public function bisschopsstaf(a:Number, detail:Number, color:uint, size:Number):Sprite
 		{
+			
 			var graph:Sprite=new Sprite;
+			graph.graphics.clear();
 			var ang:Number=0;
 			var r:Number;
 			var coor:Array=[];
@@ -126,7 +136,9 @@ package
 		
 		public function formulla(a:Number, detail:Number, color:uint, size:Number, b:Number):Sprite
 		{
+			
 			var graph:Sprite=new Sprite;
+			graph.graphics.clear();
 			var ang:Number=0;
 			var r:Number;
 			var coor:Array=[];

@@ -1,11 +1,17 @@
 package
 {
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	public class PropertiesFunctions extends Sprite
 	{	//PROPERTIES
 		public var output:Number;
+		private var slider:Sprite;
+		private var button:Sprite;
+		private var sliding:Boolean;
 		
+		public var procent:Number = 0.5;
 		
 		public function PropertiesFunctions()
 		{
@@ -14,14 +20,12 @@ package
 		
 		//METHODES
 		
-		public function addSlider():void
+		public function addSlider(x:Number):void
 		{
-			var slider:Sprite;
-			var button:Sprite;
-			var sliding:Boolean;
 			
+			this.x = x;
 			this.graphics.beginFill(0x000000, 0.5);
-			this.graphics.drawRect(0,0,10, 210);
+			this.graphics.drawRect(0,0,10, 110);
 			this.graphics.endFill();
 			this.buttonMode = true;
 			
@@ -30,7 +34,7 @@ package
 			
 			
 			slider.graphics.beginFill(0x000000, 1);
-			slider.graphics.drawRect(0, 0, 2, 200);
+			slider.graphics.drawRect(0, 0, 2, 100);
 			slider.graphics.endFill();
 			
 			var xSlider:int = this.width * .5 - slider.width * .5;
@@ -55,9 +59,50 @@ package
 			button.buttonMode = true;
 			button.mouseChildren = false;
 			
-			
+			this.addEventListener(Event.ADDED_TO_STAGE, stageHandler);
 			
 			
 		}
+		
+		private function stageHandler(e:Event):void
+		{
+			this.removeEventListener(Event.ADDED_TO_STAGE, stageHandler);
+			this.addEventListener(Event.ENTER_FRAME, frameHandler);
+			this.addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+			this.addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+		}
+		
+		private function frameHandler(e:Event):void
+		{
+			sliding = true;
+		}
+		
+		private function mouseDownHandler(e:MouseEvent):void
+		{
+			sliding = false;
+		}
+		
+		private function mouseUpHandler(e:MouseEvent):void
+		{
+			if(sliding)
+			{
+				button.y = mouseY;
+				
+				if (button.y < slider.y)
+				{
+					button.y = slider.y;
+				}
+				
+				if (button.y > slider.y + slider.height - button.height)
+				{
+					button.y=slider.y + slider.height - button.height;
+				}
+				
+				procent = button.y / (slider.y + slider.height - button.height);
+			}
+		}
+		
+		
+		
 	}
 }

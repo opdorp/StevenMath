@@ -1,5 +1,7 @@
 package
 {
+	import com.greensock.TweenLite;
+	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
@@ -18,7 +20,7 @@ package
 		//properties
 		private var micSound:Sound;
 		private var micBytes:ByteArray;
-		private var soundBytes:ByteArray = new ByteArray();
+		public var soundBytes:ByteArray = new ByteArray();
 		
 		private var setDraw:SetDraw = new SetDraw();
 		private var mic:Microphone = Microphone.getMicrophone();
@@ -28,10 +30,7 @@ package
 			
 			setMic();
 			setSound();
-			addChild(setDraw);
-			
-			
-			
+
 			addEventListener(Event.ENTER_FRAME, drawLines);
 			
 		}
@@ -46,7 +45,7 @@ package
 			if(mic)
 			{
 				
-				Security.showSettings(SecurityPanel.MICROPHONE);
+				//Security.showSettings(SecurityPanel.MICROPHONE);
 				mic.setLoopBack(false);	
 				mic.gain = 100;
 				mic.rate = 84;
@@ -83,7 +82,6 @@ package
 				var sample:Number = micBytes.readFloat();
 				e.data.writeFloat(sample);
 				e.data.writeFloat(sample);
-				//trace(sample);
 			}
 		}
 		
@@ -94,11 +92,28 @@ package
 			
 			if(soundBytes.bytesAvailable)
 			{
-				//trace(soundBytes);
-				//var scaleAm:Number = soundBytes.readFloat();
-				//setDraw.drawLines(scaleAm);
+
+			if(soundBytes != null)
+			{
+				var scaleAm:Number;
+				var rotAm:Number
 				
-				setDraw.soundBytes = soundBytes;
+				if(soundBytes.readFloat() == 0)
+				{
+					scaleAm = rotAm = 1;
+				}
+				else
+				{
+					scaleAm = soundBytes.readFloat()*10;	
+					rotAm = soundBytes.readFloat()*40;	
+					
+				}
+			}
+			
+			
+			TweenLite.to(setDraw.holder, 0.1, {scaleY:scaleAm, scaleX:scaleAm, rotation:rotAm});
+				
+				
 				
 			}
 			
